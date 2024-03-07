@@ -1,7 +1,8 @@
+export DISPLAY=:0
 export DEFAULT_USER=$USER
 
-export EDITOR="nvim"
-export VISUAL="nvim"
+export EDITOR="vim"
+export VISUAL="vim"
 export LESS="-R --mouse --wheel-lines=3"
 
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -14,11 +15,8 @@ export HISTSIZE=10000                   # Maximum events for internal history
 export SAVEHIST=10000                   # Maximum events in history file
 export ZSHZ_DATA="$XDG_DATA_HOME/.zshz" # Database file for zsh z
 
-export JAVA_HOME="/usr/lib/jvm/jdk-17-oracle-x64"
-export MAVEN_HOME="/usr/local/maven"
-export GROOVY_HOME="/usr/local/groovy"
 export NVM_DIR="$HOME/.nvm"
 export NVM_SYMLINK_CURRENT="true"
-export FPATH="$HOME/.eza/completions/zsh:$FPATH"
+export M2_HOME="$HOME/.sdkman/candidates/maven/3.9.6"
 
-export CHROME_BIN="/usr/bin/chromium-browser"
+export CHROME_BIN="/usr/bin/chromium"

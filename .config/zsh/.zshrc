@@ -74,11 +74,12 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(
     git
     z
-    zsh-syntax-highlighting
-    zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 source $HOME/.config/zsh/aliases
 source $HOME/.config/zsh/path
 
@@ -111,3 +112,10 @@ source $HOME/.config/zsh/path
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+[[ $commands[ng] ]] && source <(ng completion script)
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

@@ -1,6 +1,6 @@
-path=("$MAVEN_HOME/bin" $path)
-path=("$GROOVY_HOME/bin" $path)
+#path=("$MAVEN_HOME/bin" $path)
+#path=("$GROOVY_HOME/bin" $path)
 path=("$HOME/.local/bin" $path)
-path=("$HOME/.krew/bin" $path)
-path=("/usr/local/nvim/bin" $path)
+#path=("$HOME/.krew/bin" $path)
+#path=("/usr/local/nvim/bin" $path)
 export PATH

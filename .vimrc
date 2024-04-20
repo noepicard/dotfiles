@@ -72,12 +72,6 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 " Use dark background
 set background=dark
 
-" Remove --INSERT--
-set noshowmode
-
-" Decrease delay when switching to normal mode
-set ttimeout ttimeoutlen=50
-
 " use the clipboards of vim and win
 set clipboard=unnamedplus
 
@@ -87,8 +81,6 @@ set clipboard=unnamedplus
 " PLUGINS ---------------------------------------------------------------- {{{
 
 call plug#begin('~/.vim/plugged')
-
-Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
@@ -121,9 +113,11 @@ set statusline+=\ %F\ %M\ %Y\ %R
 set statusline+=%=
 
 " Status line right side.
-set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
+set statusline+=\ row:\ %l\ col:\ %c\ percent:\ %p%%
 
 " Show the status on the second to last line.
 set laststatus=2
+
+hi StatusLine ctermbg=none cterm=bold
 
 " }}}

@@ -33,13 +33,13 @@ ZSH_THEME="robbyrussell"
 # zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
+DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -49,6 +49,8 @@ ZSH_THEME="robbyrussell"
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
+
+ZLE_REMOVE_SUFFIX_CHARS=""
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -74,6 +76,10 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(
     git
     z
+    nvm
+    npm
+    yarn
+    timewarrior
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -109,9 +115,23 @@ source $HOME/.config/zsh/path
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+is_git() {
+    [[ $(git rev-parse --is-inside-work-tree 2>/dev/null) == true ]]
+}
+tab_title() {
+    local "BETTER_PWD"
+    if is_git; then
+        BETTER_PWD=$(git rev-parse --show-toplevel)
+    else
+        BETTER_PWD=$(pwd)
+    fi
+    # sets the tab title
+    echo -ne "\e]1;${BETTER_PWD##*/}\a"
+}
+add-zsh-hook precmd tab_title
 
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 [[ $commands[ng] ]] && source <(ng completion script)

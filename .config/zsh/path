@@ -1,6 +1,4 @@
-#path=("$MAVEN_HOME/bin" $path)
-#path=("$GROOVY_HOME/bin" $path)
 path=("$HOME/.local/bin" $path)
-#path=("$HOME/.krew/bin" $path)
-#path=("/usr/local/nvim/bin" $path)
+path=("/mnt/c/Program Files/Microsoft VS Code/bin" $path)
+path=("${KREW_ROOT:-$HOME/.krew}/bin" $path)
 export PATH

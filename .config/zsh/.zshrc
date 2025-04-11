@@ -74,13 +74,13 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git
     z
-    nvm
-    npm
-    yarn
+    git
     docker
     kubectl
+    fnm
+    sdk
+    mvn
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -131,10 +131,17 @@ tab_title() {
 }
 add-zsh-hook precmd tab_title
 
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 [[ $commands[ng] ]] && source <(ng completion script)
+
+
+# fnm
+FNM_PATH="$XDG_DATA_HOME/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env --use-on-cd --shell zsh`"
+fi
+
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

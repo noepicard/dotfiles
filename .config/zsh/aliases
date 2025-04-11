@@ -1,9 +1,8 @@
-# alias ls="eza -lG --group-directories-first --sort=extension --no-permissions --no-user --icons=auto"
 alias ls="ls -aF --color=always --group-directories-first"
 alias config='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias vi='vim'
 
-# timewarrior
 alias tw="timew"
 alias tws="timew summary"
 alias twsi="timew summary :ids"
+

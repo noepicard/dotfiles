@@ -2,11 +2,11 @@ k9s:
   liveViewAutoRefresh: false
   screenDumpDir: /home/picardno/.local/state/k9s/screen-dumps
   refreshRate: 2
-  maxConnRetry: 5
-  readOnly: true
-  noExitOnCtrlC: false
+  maxConnRetry: 3
+  readOnly: false
+  noExitOnCtrlC: true
   ui:
-    enableMouse: false
+    enableMouse: true
     headless: true
     logoless: false
     crumbsless: false
@@ -16,7 +16,7 @@ k9s:
   skipLatestRevCheck: false
   disablePodCounting: false
   shellPod:
-    image: busybox:1.35.0
+    image: busybox:1.37.0
     namespace: default
     limits:
       cpu: 100m
@@ -27,12 +27,11 @@ k9s:
       namespaces: []
       labels: {}
   logger:
-    tail: 500
-    buffer: 5000
+    tail: 300
+    buffer: 10000
     sinceSeconds: -1
-    fullScreen: false
-    textWrap: false
-    showTime: false
+    textWrap: true
+    showTime: true
   thresholds:
     cpu:
       critical: 90

@@ -81,7 +81,6 @@ set clipboard=unnamedplus
 " PLUGINS ---------------------------------------------------------------- {{{
 
 call plug#begin('~/.vim/plugged')
-
 call plug#end()
 
 " }}}
